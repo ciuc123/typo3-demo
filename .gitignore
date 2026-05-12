@@ -1,0 +1,27 @@
+# TYPO3 generated/installed files
+/public/typo3/
+/public/typo3conf/
+/public/typo3temp/
+/public/uploads/
+/public/fileadmin/
+
+# Composer dependencies
+/vendor/
+/bin/
+
+# TYPO3 Install tool (additional.php may contain secrets)
+/config/system/additional.php
+
+# Logs & cache
+/var/
+*.log
+
+# IDE
+.idea/
+.vscode/
+*.swp
+*.swo
+
+# OS
+.DS_Store
+Thumbs.db

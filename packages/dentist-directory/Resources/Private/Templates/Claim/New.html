@@ -1,0 +1,44 @@
+<html xmlns:f="http://typo3.org/ns/TYPO3/CMS/Fluid/ViewHelpers"
+      data-namespace-typo3-fluid="true">
+<f:layout name="Default" />
+
+<f:section name="main">
+
+<div class="dd-claim dd-claim--form">
+    <h1>Revendică afacerea: {dentist.name}</h1>
+    <p>Completează formularul de mai jos. Îți vom trimite un link de confirmare pe e-mail.</p>
+
+    <f:form action="create" controller="Claim" pluginName="Claim"
+            objectName="claim" object="{claim}" class="dd-form">
+
+        <f:form.hidden name="dentistUid" value="{dentist.uid}" />
+
+        <div class="dd-form__group">
+            <f:form.label for="claimantName">Numele tău *</f:form.label>
+            <f:form.textfield property="claimantName" id="claimantName" class="dd-form__input" required="required" />
+        </div>
+
+        <div class="dd-form__group">
+            <f:form.label for="claimantEmail">E-mail *</f:form.label>
+            <f:form.textfield property="claimantEmail" id="claimantEmail" type="email" class="dd-form__input" required="required" />
+        </div>
+
+        <div class="dd-form__group">
+            <f:form.label for="claimantPhone">Telefon</f:form.label>
+            <f:form.textfield property="claimantPhone" id="claimantPhone" type="tel" class="dd-form__input" />
+        </div>
+
+        <div class="dd-form__group">
+            <f:form.label for="message">Mesaj (opțional)</f:form.label>
+            <f:form.textarea property="message" id="message" rows="4" class="dd-form__textarea" />
+        </div>
+
+        <div class="dd-form__actions">
+            <f:form.submit value="Trimite cererea" class="dd-btn dd-btn--primary" />
+        </div>
+
+    </f:form>
+</div>
+
+</f:section>
+</html>

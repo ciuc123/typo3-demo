@@ -1,0 +1,39 @@
+<html xmlns:f="http://typo3.org/ns/TYPO3/CMS/Fluid/ViewHelpers"
+      data-namespace-typo3-fluid="true">
+
+<div class="dd-lead-partial">
+    <f:form action="submit" controller="LeadForm" pluginName="LeadForm"
+            objectName="lead" object="{lead}" class="dd-form">
+
+        <f:form.hidden name="dentistUid" value="{dentist.uid}" />
+
+        <div class="dd-form__row">
+            <div class="dd-form__group">
+                <f:form.label for="senderName">Numele tău *</f:form.label>
+                <f:form.textfield property="senderName" id="senderName"
+                                  class="dd-form__input" required="required" />
+            </div>
+            <div class="dd-form__group">
+                <f:form.label for="senderPhone">Telefon</f:form.label>
+                <f:form.textfield property="senderPhone" id="senderPhone"
+                                  type="tel" class="dd-form__input" />
+            </div>
+        </div>
+
+        <div class="dd-form__group">
+            <f:form.label for="senderEmail">E-mail *</f:form.label>
+            <f:form.textfield property="senderEmail" id="senderEmail"
+                              type="email" class="dd-form__input" required="required" />
+        </div>
+
+        <div class="dd-form__group">
+            <f:form.label for="message">Mesaj</f:form.label>
+            <f:form.textarea property="message" id="message" rows="4" class="dd-form__textarea" />
+        </div>
+
+        <div class="dd-form__actions">
+            <f:form.submit value="Trimite mesaj" class="dd-btn dd-btn--primary" />
+        </div>
+
+    </f:form>
+</div>

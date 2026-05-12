@@ -1,0 +1,116 @@
+<html xmlns:f="http://typo3.org/ns/TYPO3/CMS/Fluid/ViewHelpers"
+      data-namespace-typo3-fluid="true">
+<f:layout name="Default" />
+
+<f:section name="main">
+
+<article class="dd-detail" itemscope itemtype="https://schema.org/Dentist">
+
+    <!-- ── Header ──────────────────────────────────────────────────────────── -->
+    <header class="dd-detail__header">
+        <f:if condition="{dentist.image}">
+            <div class="dd-detail__photo">
+                <f:image image="{dentist.image}" alt="{dentist.name}" width="400c" height="300c" class="dd-detail__img" />
+            </div>
+        </f:if>
+
+        <div class="dd-detail__headline">
+            <f:if condition="{dentist.isFeatured}">
+                <span class="dd-badge dd-badge--premium">⭐ Premium</span>
+            </f:if>
+            <h1 itemprop="name">{dentist.name}</h1>
+            <p class="dd-detail__specialization" itemprop="medicalSpecialty">{dentist.specialization}</p>
+
+            <f:if condition="{dentist.categories -> f:count()} > 0">
+                <ul class="dd-tags">
+                    <f:for each="{dentist.categories}" as="cat">
+                        <li class="dd-tag">{cat.name}</li>
+                    </f:for>
+                </ul>
+            </f:if>
+        </div>
+    </header>
+
+    <!-- ── Contact info ────────────────────────────────────────────────────── -->
+    <section class="dd-detail__info" itemprop="address" itemscope itemtype="https://schema.org/PostalAddress">
+        <h2 class="dd-section-title">Contact</h2>
+        <ul class="dd-detail__contact-list">
+            <li>
+                <span class="dd-icon dd-icon--pin"></span>
+                <span itemprop="streetAddress">{dentist.address}</span>,
+                <span>{dentist.district}</span>,
+                <span itemprop="addressLocality">{dentist.city}</span>
+            </li>
+            <f:if condition="{dentist.phone}">
+                <li>
+                    <span class="dd-icon dd-icon--phone"></span>
+                    <a href="tel:{dentist.phone}" itemprop="telephone">{dentist.phone}</a>
+                </li>
+            </f:if>
+            <f:if condition="{dentist.email}">
+                <li>
+                    <span class="dd-icon dd-icon--email"></span>
+                    <a href="mailto:{dentist.email}" itemprop="email">{dentist.email}</a>
+                </li>
+            </f:if>
+            <f:if condition="{dentist.website}">
+                <li>
+                    <span class="dd-icon dd-icon--web"></span>
+                    <a href="{dentist.website}" target="_blank" rel="noopener">{dentist.website}</a>
+                </li>
+            </f:if>
+        </ul>
+    </section>
+
+    <!-- ── Working hours ───────────────────────────────────────────────────── -->
+    <f:if condition="{dentist.workingHours}">
+        <section class="dd-detail__hours">
+            <h2 class="dd-section-title">Program</h2>
+            <p>{dentist.workingHours}</p>
+        </section>
+    </f:if>
+
+    <!-- ── Description ─────────────────────────────────────────────────────── -->
+    <f:if condition="{dentist.description}">
+        <section class="dd-detail__description" itemprop="description">
+            <h2 class="dd-section-title">Despre clinică</h2>
+            <f:format.html>{dentist.description}</f:format.html>
+        </section>
+    </f:if>
+
+    <!-- ── Map ─────────────────────────────────────────────────────────────── -->
+    <f:if condition="{dentist.latitude} && {dentist.longitude}">
+        <section class="dd-detail__map">
+            <h2 class="dd-section-title">Hartă</h2>
+            <div class="dd-map"
+                 data-lat="{dentist.latitude}"
+                 data-lng="{dentist.longitude}"
+                 data-label="{dentist.name}">
+            </div>
+        </section>
+    </f:if>
+
+    <!-- ── Lead form (monetization) ────────────────────────────────────────── -->
+    <f:if condition="{settings.enableLeadForm}">
+        <section class="dd-detail__lead-form">
+            <h2 class="dd-section-title">Trimite un mesaj</h2>
+            <f:render partial="LeadForm" arguments="{dentist: dentist}" />
+        </section>
+    </f:if>
+
+    <!-- ── Claim CTA ───────────────────────────────────────────────────────── -->
+    <f:if condition="{dentist.isClaimed} == 0">
+        <aside class="dd-claim-cta">
+            <p>Ești proprietarul acestei clinici?</p>
+            <f:link.action action="new" controller="Claim" pluginName="Claim"
+                           arguments="{dentist: dentist.uid}"
+                           class="dd-btn dd-btn--outline">
+                Revendică afacerea
+            </f:link.action>
+        </aside>
+    </f:if>
+
+</article>
+
+</f:section>
+</html>

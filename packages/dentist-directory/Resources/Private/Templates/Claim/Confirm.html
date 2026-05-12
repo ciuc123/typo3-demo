@@ -1,0 +1,23 @@
+<html xmlns:f="http://typo3.org/ns/TYPO3/CMS/Fluid/ViewHelpers"
+      data-namespace-typo3-fluid="true">
+<f:layout name="Default" />
+
+<f:section name="main">
+
+<div class="dd-claim dd-claim--confirm">
+    <f:if condition="{error} == 'invalid_token'">
+        <f:then>
+            <h1>Link invalid sau expirat</h1>
+            <p>Linkul de confirmare nu este valid sau a expirat.</p>
+        </f:then>
+        <f:else>
+            <h1>Verifică e-mailul</h1>
+            <p>Am trimis un link de confirmare la adresa <strong>{claim.claimantEmail}</strong>.</p>
+            <p>Fă click pe link pentru a finaliza procesul de revendicare.</p>
+            <p class="dd-muted">Dacă nu primești e-mailul în câteva minute, verifică folderul Spam.</p>
+        </f:else>
+    </f:if>
+</div>
+
+</f:section>
+</html>

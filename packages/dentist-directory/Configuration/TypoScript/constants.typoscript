@@ -1,0 +1,16 @@
+plugin.tx_dentistdirectory {
+    view {
+        templateRootPath =
+        partialRootPath  =
+        layoutRootPath   =
+    }
+    persistence {
+        storagePid = 0
+    }
+    settings {
+        adminEmail      = admin@example.com
+        listingPageUid  = 0
+        detailPageUid   = 0
+        claimPageUid    = 0
+    }
+}

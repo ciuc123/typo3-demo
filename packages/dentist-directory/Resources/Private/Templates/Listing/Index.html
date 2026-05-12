@@ -1,0 +1,59 @@
+<html xmlns:f="http://typo3.org/ns/TYPO3/CMS/Fluid/ViewHelpers"
+      xmlns:dd="http://typo3.org/ns/Ciuc123/DentistDirectory/ViewHelpers"
+      data-namespace-typo3-fluid="true">
+<f:layout name="Default" />
+
+<f:section name="main">
+
+    <!-- ── Hero ──────────────────────────────────────────────────────── -->
+    <section class="dd-hero">
+        <div class="dd-hero__inner">
+            <h1>Stomatologi în București</h1>
+            <p>Găsește cel mai bun dentist în cartierul tău.</p>
+
+            <f:form action="index" method="get" class="dd-search-form">
+                <input type="text"
+                       name="tx_dentistdirectory_listing[search]"
+                       value="{currentSearch}"
+                       placeholder="Caută după nume, specializare…"
+                       class="dd-search-form__input" />
+                <button type="submit" class="dd-search-form__btn">Caută</button>
+            </f:form>
+        </div>
+    </section>
+
+    <!-- ── Filters ───────────────────────────────────────────────────── -->
+    <f:render partial="SearchFilter" arguments="{categories: categories, currentCategory: currentCategory, currentDistrict: currentDistrict}" />
+
+    <!-- ── Featured spotlight ────────────────────────────────────────── -->
+    <f:if condition="{featuredDentists -> f:count()} > 0">
+        <section class="dd-featured">
+            <h2 class="dd-section-title">Clinici recomandate</h2>
+            <div class="dd-grid dd-grid--featured">
+                <f:for each="{featuredDentists}" as="dentist">
+                    <f:render partial="DentistCard" arguments="{dentist: dentist, featured: 1}" />
+                </f:for>
+            </div>
+        </section>
+    </f:if>
+
+    <!-- ── All results ───────────────────────────────────────────────── -->
+    <section class="dd-results">
+        <h2 class="dd-section-title">
+            Toți stomatologii
+            <span class="dd-results__count">({dentists -> f:count()} rezultate)</span>
+        </h2>
+
+        <f:if condition="{dentists -> f:count()} == 0">
+            <p class="dd-empty">Niciun rezultat găsit. Modifică filtrele.</p>
+        </f:if>
+
+        <div class="dd-grid">
+            <f:for each="{dentists}" as="dentist">
+                <f:render partial="DentistCard" arguments="{dentist: dentist}" />
+            </f:for>
+        </div>
+    </section>
+
+</f:section>
+</html>

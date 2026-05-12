@@ -1,0 +1,54 @@
+{
+    "name": "ciuc123/typo3-demo",
+    "description": "Dentist Directory Bucharest — TYPO3 MVP with paid listings",
+    "type": "project",
+    "license": "GPL-2.0-or-later",
+    "require": {
+        "php": "^8.2",
+        "ciuc123/dentist-directory": "@dev",
+        "typo3/cms-core": "^12.4",
+        "typo3/cms-backend": "^12.4",
+        "typo3/cms-extbase": "^12.4",
+        "typo3/cms-fluid": "^12.4",
+        "typo3/cms-frontend": "^12.4",
+        "typo3/cms-install": "^12.4",
+        "typo3/cms-scheduler": "^12.4",
+        "helhum/typo3-console": "^8.1"
+    },
+    "require-dev": {
+        "typo3/testing-framework": "^8.0",
+        "phpunit/phpunit": "^10.5"
+    },
+    "autoload": {
+        "psr-4": {}
+    },
+    "autoload-dev": {
+        "psr-4": {
+            "Ciuc123\\DentistDirectory\\Tests\\": "packages/dentist-directory/Tests/"
+        }
+    },
+    "config": {
+        "allow-plugins": {
+            "typo3/cms-composer-installers": true,
+            "typo3/class-alias-loader": true
+        },
+        "vendor-dir": "vendor",
+        "bin-dir": "bin"
+    },
+    "repositories": [
+        {
+            "type": "path",
+            "url": "packages/*"
+        }
+    ],
+    "extra": {
+        "typo3/cms": {
+            "web-dir": "public"
+        }
+    },
+    "scripts": {
+        "post-autoload-dump": [
+            "@php vendor/bin/typo3 install:generatepackagestates 2>/dev/null || true"
+        ]
+    }
+}
