@@ -1,29 +1,35 @@
-# TYPO3 generated/installed files
-/public/typo3/
-/public/typo3conf/
-/public/typo3temp/
-/public/uploads/
-/public/fileadmin/
-/public/_assets/
+# Git ignore patterns for TYPO3 Docker project
+
+# Environment
+.env
+.env.local
+.env.*.local
+
 
 # Composer dependencies
 /vendor/
 /bin/
 
-# TYPO3 Install tool (additional.php may contain secrets)
-/config/system/additional.php
+# TYPO3 specific
+var/
+fileadmin/
+typo3conf/
+typo3temp/
+public/index.php
+public/typo3/
 
 # Logs & cache
-/var/
 *.log
 .phpunit.result.cache
 
 # IDE
 .idea/
-.vscode/
-*.swp
-*.swo
 
-# OS
-.DS_Store
-Thumbs.db
+# Node (if using frontend tools)
+node_modules/
+npm-debug.log
+yarn-error.log
+
+# Build artifacts
+dist/
+build/
