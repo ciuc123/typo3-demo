@@ -1,0 +1,38 @@
+<html xmlns:f="http://typo3.org/ns/TYPO3/CMS/Fluid/ViewHelpers"
+      data-namespace-typo3-fluid="true">
+<!DOCTYPE html>
+<html lang="ro">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Stomatologi București | Dentist Directory</title>
+    <f:be.pageRenderer />
+</head>
+<body class="dd-page">
+
+    <header class="dd-header">
+        <div class="dd-container">
+            <a href="/" class="dd-logo">🦷 Stomatologi București</a>
+            <nav class="dd-nav">
+                <f:link.action action="index" controller="Listing" pluginName="Listing">Listare</f:link.action>
+            </nav>
+        </div>
+    </header>
+
+    <main class="dd-main dd-container">
+        <f:render section="main" />
+    </main>
+
+    <footer class="dd-footer">
+        <div class="dd-container">
+            <p>© <f:format.date format="Y">now</f:format.date> Dentist Directory Bucharest</p>
+            <p class="dd-footer__tagline">
+                Ești dentist?
+                <a href="#pricing" class="dd-link">Adaugă clinica</a> sau
+                <a href="#pricing" class="dd-link">upgradează la Premium</a>
+            </p>
+        </div>
+    </footer>
+
+</body>
+</html>

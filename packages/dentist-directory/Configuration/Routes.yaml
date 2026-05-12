@@ -1,0 +1,33 @@
+routeEnhancers:
+  DentistDirectoryListing:
+    type: Extbase
+    extension: DentistDirectory
+    plugin: Listing
+    routes:
+      - routePath: '/'
+        _controller: 'Listing::index'
+      - routePath: '/{dentist_slug}'
+        _controller: 'Listing::show'
+        _arguments:
+          dentist_slug: dentist
+    aspects:
+      dentist_slug:
+        type: PersistedAliasMapper
+        tableName: tx_dentistdirectory_domain_model_dentist
+        routeFieldName: slug
+
+  DentistDirectoryClaim:
+    type: Extbase
+    extension: DentistDirectory
+    plugin: Claim
+    routes:
+      - routePath: '/claim/{dentist}'
+        _controller: 'Claim::new'
+        _arguments:
+          dentist: dentist
+      - routePath: '/claim/confirm/{token}'
+        _controller: 'Claim::confirm'
+        _arguments:
+          token: token
+      - routePath: '/claim/success'
+        _controller: 'Claim::success'

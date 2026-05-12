@@ -1,0 +1,33 @@
+<html xmlns:f="http://typo3.org/ns/TYPO3/CMS/Fluid/ViewHelpers"
+      data-namespace-typo3-fluid="true">
+
+<div class="dd-filters">
+    <form method="get" class="dd-filters__form">
+
+        <!-- District filter -->
+        <select name="tx_dentistdirectory_listing[district]" class="dd-filters__select">
+            <option value="">Toate sectoarele</option>
+            <option value="sector-1" {f:if(condition: currentDistrict == 'sector-1', then: 'selected')}>Sector 1</option>
+            <option value="sector-2" {f:if(condition: currentDistrict == 'sector-2', then: 'selected')}>Sector 2</option>
+            <option value="sector-3" {f:if(condition: currentDistrict == 'sector-3', then: 'selected')}>Sector 3</option>
+            <option value="sector-4" {f:if(condition: currentDistrict == 'sector-4', then: 'selected')}>Sector 4</option>
+            <option value="sector-5" {f:if(condition: currentDistrict == 'sector-5', then: 'selected')}>Sector 5</option>
+            <option value="sector-6" {f:if(condition: currentDistrict == 'sector-6', then: 'selected')}>Sector 6</option>
+        </select>
+
+        <!-- Category filter -->
+        <select name="tx_dentistdirectory_listing[category]" class="dd-filters__select">
+            <option value="0">Toate categoriile</option>
+            <f:for each="{categories}" as="cat">
+                <option value="{cat.uid}" {f:if(condition: currentCategory == cat.uid, then: 'selected')}>
+                    {cat.name}
+                </option>
+            </f:for>
+        </select>
+
+        <button type="submit" class="dd-btn dd-btn--filter">Filtrează</button>
+
+        <a href="?" class="dd-btn dd-btn--reset">Resetează</a>
+
+    </form>
+</div>

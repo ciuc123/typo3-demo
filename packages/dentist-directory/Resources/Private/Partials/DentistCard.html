@@ -1,0 +1,55 @@
+<html xmlns:f="http://typo3.org/ns/TYPO3/CMS/Fluid/ViewHelpers"
+      data-namespace-typo3-fluid="true">
+
+<article class="dd-card{f:if(condition: featured, then: ' dd-card--featured')}">
+
+    <f:if condition="{dentist.isFeatured}">
+        <span class="dd-badge dd-badge--premium">⭐ Premium</span>
+    </f:if>
+
+    <div class="dd-card__image-wrap">
+        <f:if condition="{dentist.image}">
+            <f:image image="{dentist.image}" alt="{dentist.name}" width="320c" height="200c" class="dd-card__img" />
+        </f:if>
+    </div>
+
+    <div class="dd-card__body">
+        <h3 class="dd-card__name">
+            <f:link.action action="show" controller="Listing" pluginName="Listing"
+                           arguments="{dentist: dentist.uid}">
+                {dentist.name}
+            </f:link.action>
+        </h3>
+
+        <p class="dd-card__specialization">{dentist.specialization}</p>
+
+        <p class="dd-card__address">
+            <span class="dd-icon dd-icon--pin"></span>
+            {dentist.district}, {dentist.city}
+        </p>
+
+        <f:if condition="{dentist.phone}">
+            <a href="tel:{dentist.phone}" class="dd-card__phone">
+                <span class="dd-icon dd-icon--phone"></span>
+                {dentist.phone}
+            </a>
+        </f:if>
+    </div>
+
+    <div class="dd-card__footer">
+        <f:link.action action="show" controller="Listing" pluginName="Listing"
+                       arguments="{dentist: dentist.uid}"
+                       class="dd-btn dd-btn--sm">
+            Vezi profil
+        </f:link.action>
+
+        <f:if condition="{dentist.isClaimed} == 0">
+            <f:link.action action="new" controller="Claim" pluginName="Claim"
+                           arguments="{dentist: dentist.uid}"
+                           class="dd-btn dd-btn--sm dd-btn--outline">
+                Revendică
+            </f:link.action>
+        </f:if>
+    </div>
+
+</article>

@@ -1,0 +1,36 @@
+plugin.tx_dentistdirectory {
+    view {
+        templateRootPaths  {
+            0 = EXT:dentist_directory/Resources/Private/Templates/
+            10 = {$plugin.tx_dentistdirectory.view.templateRootPath}
+        }
+        partialRootPaths {
+            0 = EXT:dentist_directory/Resources/Private/Partials/
+            10 = {$plugin.tx_dentistdirectory.view.partialRootPath}
+        }
+        layoutRootPaths {
+            0 = EXT:dentist_directory/Resources/Private/Layouts/
+            10 = {$plugin.tx_dentistdirectory.view.layoutRootPath}
+        }
+    }
+    persistence {
+        storagePid = {$plugin.tx_dentistdirectory.persistence.storagePid}
+    }
+    settings {
+        featuredLimit       = 6
+        itemsPerPage        = 12
+        adminEmail          = {$plugin.tx_dentistdirectory.settings.adminEmail}
+        enableLeadForm      = 1
+        listingPageUid      = {$plugin.tx_dentistdirectory.settings.listingPageUid}
+        detailPageUid       = {$plugin.tx_dentistdirectory.settings.detailPageUid}
+        claimPageUid        = {$plugin.tx_dentistdirectory.settings.claimPageUid}
+    }
+}
+
+# ─── Include CSS & JS ──────────────────────────────────────────────────────────
+page.includeCSS {
+    dentistDirectory = EXT:dentist_directory/Resources/Public/Css/directory.css
+}
+page.includeJSFooter {
+    dentistDirectory = EXT:dentist_directory/Resources/Public/JavaScript/directory.js
+}
