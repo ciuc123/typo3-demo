@@ -4,6 +4,7 @@
 /public/typo3temp/
 /public/uploads/
 /public/fileadmin/
+/public/_assets/
 
 # Composer dependencies
 /vendor/
@@ -15,6 +16,7 @@
 # Logs & cache
 /var/
 *.log
+.phpunit.result.cache
 
 # IDE
 .idea/
